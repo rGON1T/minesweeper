@@ -214,10 +214,6 @@ public:
 	M.SetMines(bck, 21);
 	M.FillCells(bck);
 	bool game = true;
-	cout << M.GetPower(3, 3) << "\n";
-	cout << M.GetPower(100, 0) << "\n";
-	cout << M.GetPower(10, 5) << "\n";
-	cout << M.GetPower(9, 2) << "\n";
 	M.Print(fr);
 	cout << "Free cells remainnig: " << M.GetFreeCells() << "\n";
 	while (game)
