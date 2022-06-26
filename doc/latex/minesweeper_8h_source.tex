@@ -1,0 +1,214 @@
+\hypertarget{minesweeper_8h_source}{}\doxysection{D\+:/cpp/minesweeper/minesweeper.h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by ragonit on 19.06.2022.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef MAIN\_CPP\_MINESWEEPER\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define MAIN\_CPP\_MINESWEEPER\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_mine_sweepeer}{MineSweepeer}} \{}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} frees\_;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} h, w;}
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} GetFreeCells() \{}
+\DoxyCodeLine{22         \textcolor{keywordflow}{return} frees\_;}
+\DoxyCodeLine{23     \}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \mbox{\hyperlink{class_mine_sweepeer}{MineSweepeer}}(\textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b)}
+\DoxyCodeLine{26             : h(a), w(b) \{}
+\DoxyCodeLine{27     \}}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} GetNumberOfDigits(\textcolor{keywordtype}{int} a) \{}
+\DoxyCodeLine{29         \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{30         \textcolor{keywordflow}{if} (a == 0)}
+\DoxyCodeLine{31             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{32         \textcolor{keywordflow}{while} (a > 0) \{}
+\DoxyCodeLine{33             a /= 10;}
+\DoxyCodeLine{34             ++i;}
+\DoxyCodeLine{35         \}}
+\DoxyCodeLine{36         \textcolor{keywordflow}{return} i;}
+\DoxyCodeLine{37     \}}
+\DoxyCodeLine{38     \textcolor{keywordtype}{int} GetPower(\textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b) \{}
+\DoxyCodeLine{39         \textcolor{keywordtype}{int} ans = 1;}
+\DoxyCodeLine{40         \textcolor{keywordflow}{for} (;b > 0; -\/-\/b) \{}
+\DoxyCodeLine{41             ans *= a;}
+\DoxyCodeLine{42         \}}
+\DoxyCodeLine{43         \textcolor{keywordflow}{return} ans;}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{char} GetDigitFromNumber(\textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b) \{}
+\DoxyCodeLine{47         \textcolor{keywordtype}{int} c = GetPower(10, GetNumberOfDigits(a) -\/ b);}
+\DoxyCodeLine{48         \textcolor{keywordtype}{int} d = GetPower(10, GetNumberOfDigits(a) -\/ b -\/ 1);}
+\DoxyCodeLine{49         \textcolor{keywordtype}{int} l = (a \% c) / d;}
+\DoxyCodeLine{50         \textcolor{keywordflow}{if} (b >= GetNumberOfDigits(a))}
+\DoxyCodeLine{51             \textcolor{keywordflow}{return}  \textcolor{charliteral}{' '};}
+\DoxyCodeLine{52         \textcolor{keywordflow}{return} \textcolor{charliteral}{'0'} + l;}
+\DoxyCodeLine{53     \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} Fill(vector<vector<char>>\& f,\textcolor{keywordtype}{char} a)\{}
+\DoxyCodeLine{56         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < h; ++i)\{}
+\DoxyCodeLine{57             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < w; ++j)\{}
+\DoxyCodeLine{58                 f[i][j] = a;}
+\DoxyCodeLine{59             \};}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62     \textcolor{keywordtype}{int} Print(vector<vector<char>>\& f)}
+\DoxyCodeLine{63     \{}
+\DoxyCodeLine{64         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < GetNumberOfDigits(w-\/1); ++j) \{}
+\DoxyCodeLine{65             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < w; ++i) \{}
+\DoxyCodeLine{66                 cout << GetDigitFromNumber(i,j) << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{67             \}}
+\DoxyCodeLine{68             cout << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < w; ++j)}
+\DoxyCodeLine{71             cout << \textcolor{stringliteral}{"{}\string^"{}} << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{72         cout << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{73         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < h; ++i)}
+\DoxyCodeLine{74         \{}
+\DoxyCodeLine{75             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < w; ++j)}
+\DoxyCodeLine{76             \{}
+\DoxyCodeLine{77                 cout << f[i][j] << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{78             \};}
+\DoxyCodeLine{79             cout << \textcolor{stringliteral}{"{}> "{}} << i << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{80             cout << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{81         \}}
+\DoxyCodeLine{82         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{83     \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} FillMinesAroundCell(\textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} x, vector<vector<char>>\& field) \{}
+\DoxyCodeLine{86         \textcolor{keywordflow}{if} (field[y][x] == \textcolor{charliteral}{'*'}) \{}
+\DoxyCodeLine{87             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{88         \}}
+\DoxyCodeLine{89         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i : \{-\/1, 0, 1\}) \{}
+\DoxyCodeLine{90             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j : \{-\/1, 0, 1\}) \{}
+\DoxyCodeLine{91                 \textcolor{keywordtype}{int} y1 = y + i;}
+\DoxyCodeLine{92                 \textcolor{keywordtype}{int} x1 = x + j;}
+\DoxyCodeLine{93                 \textcolor{keywordflow}{if} (y1 < 0 || y1 >= h || x1 < 0 || x1 >= w)\{}
+\DoxyCodeLine{94                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{95                 \}}
+\DoxyCodeLine{96                 field[y][x] += field[y1][x1] == \textcolor{charliteral}{'*'};}
+\DoxyCodeLine{97             \}}
+\DoxyCodeLine{98         \}}
+\DoxyCodeLine{99     \}}
+\DoxyCodeLine{100     \textcolor{keywordtype}{int} CountMinesAroundCell(\textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} x, vector<vector<char>>\& fr) \{}
+\DoxyCodeLine{101         \textcolor{keywordtype}{int} counter = 0;}
+\DoxyCodeLine{102         \textcolor{keywordflow}{if} (fr[y][x] == \textcolor{charliteral}{'*'}) \{}
+\DoxyCodeLine{103             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{104         \}}
+\DoxyCodeLine{105         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i : \{-\/1, 0, 1\}) \{}
+\DoxyCodeLine{106             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j : \{-\/1, 0, 1\}) \{}
+\DoxyCodeLine{107                 \textcolor{keywordtype}{int} y1 = y + i;}
+\DoxyCodeLine{108                 \textcolor{keywordtype}{int} x1 = x + j;}
+\DoxyCodeLine{109                 \textcolor{keywordflow}{if} (y1 < 0 || y1 >= h || x1 < 0 || x1 >= w)\{}
+\DoxyCodeLine{110                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{111                 \}}
+\DoxyCodeLine{112                 counter += fr[y1][x1] == \textcolor{charliteral}{'*'};}
+\DoxyCodeLine{113             \}}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115         \textcolor{keywordflow}{return} counter;}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{120     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_mine_sweepeer_af631d2934d9f2410754e3b15bd04ddc4}{FillCells}}(vector<vector<char>>\& field)\{}
+\DoxyCodeLine{121         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < h; ++i)\{}
+\DoxyCodeLine{122             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < w; ++j)\{}
+\DoxyCodeLine{123                 FillMinesAroundCell(i, j, field);}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125             \}}
+\DoxyCodeLine{126         \}}
+\DoxyCodeLine{127     \}}
+\DoxyCodeLine{128     \textcolor{keywordtype}{void} SetMines(vector<vector<char>>\& v,\textcolor{keywordtype}{float} a)\{}
+\DoxyCodeLine{129         \textcolor{keywordtype}{int} h=v.size();}
+\DoxyCodeLine{130         \textcolor{keywordtype}{int} w=v[0].size();}
+\DoxyCodeLine{131         frees\_ = (h * w -\/ ceil(h * w * a / 100));}
+\DoxyCodeLine{132         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < ceil(h * w * a / 100); ++i)\{}
+\DoxyCodeLine{133             \textcolor{keywordtype}{int} x = rand() \% w;}
+\DoxyCodeLine{134             \textcolor{keywordtype}{int} y = rand() \% h;}
+\DoxyCodeLine{135             \textcolor{keywordflow}{if}(v[y][x] == \textcolor{charliteral}{'*'}) \{}
+\DoxyCodeLine{136                 -\/-\/i;}
+\DoxyCodeLine{137                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{138             \}}
+\DoxyCodeLine{139             v[y][x] = \textcolor{charliteral}{'*'};}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141     \}}
+\DoxyCodeLine{142     \textcolor{keywordtype}{bool} OpenAroundNumber(vector<vector<char>>\& fr, vector<vector<char>>\& bck, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} x) \{}
+\DoxyCodeLine{143         \textcolor{keywordflow}{if} (CountMinesAroundCell(y, x, fr) > 0) \{}
+\DoxyCodeLine{144             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i : \{-\/1, 0, 1\}) \{}
+\DoxyCodeLine{145                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j : \{-\/1, 0, 1\}) \{}
+\DoxyCodeLine{146                     \textcolor{keywordtype}{int} y1 = y + i;}
+\DoxyCodeLine{147                     \textcolor{keywordtype}{int} x1 = x + j;}
+\DoxyCodeLine{148                     \textcolor{keywordflow}{if} (y1 < 0 || y1 >= h || x1 < 0 || x1 >= w)\{}
+\DoxyCodeLine{149                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{150                     \}}
+\DoxyCodeLine{151                     \textcolor{keywordflow}{if} (fr[y1][x1] == \textcolor{charliteral}{'*'}) \{}
+\DoxyCodeLine{152                         \textcolor{keywordflow}{if} (!open(fr, bck, y1, x1))}
+\DoxyCodeLine{153                             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{154                     \}}
+\DoxyCodeLine{155                 \}}
+\DoxyCodeLine{156             \}}
+\DoxyCodeLine{157         \}}
+\DoxyCodeLine{158         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{159     \}}
+\DoxyCodeLine{160     \textcolor{keywordtype}{void} OpenZeros(vector<vector<char>>\& fr, vector<vector<char>>\& bck, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} x)\{}
+\DoxyCodeLine{161         \textcolor{keywordflow}{if} (fr[y][x] == bck[y][x])}
+\DoxyCodeLine{162             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{163         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{164         \{}
+\DoxyCodeLine{165             -\/-\/frees\_;}
+\DoxyCodeLine{166             fr[y][x] = bck[y][x];}
+\DoxyCodeLine{167         \}}
+\DoxyCodeLine{168         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i : \{-\/1, 0, 1\}) \{}
+\DoxyCodeLine{169             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j : \{-\/1, 0, 1\}) \{}
+\DoxyCodeLine{170                 \textcolor{keywordtype}{int} y1 = y + i;}
+\DoxyCodeLine{171                 \textcolor{keywordtype}{int} x1 = x + j;}
+\DoxyCodeLine{172                 \textcolor{keywordflow}{if} (y1 < 0 || y1 >= h || x1 < 0 || x1 >= w)\{}
+\DoxyCodeLine{173                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{174                 \}}
+\DoxyCodeLine{175                 \textcolor{keywordflow}{if} (bck[y1][x1] == \textcolor{charliteral}{'0'} \&\& fr[y1][x1] == \textcolor{charliteral}{'0'})\{}
+\DoxyCodeLine{176                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{177                 \}}
+\DoxyCodeLine{178                 \textcolor{keywordflow}{if} (bck[y1][x1] == \textcolor{charliteral}{'0'})\{}
+\DoxyCodeLine{179                     OpenZeros(fr, bck, y1, x1);}
+\DoxyCodeLine{180                 \}}
+\DoxyCodeLine{181                 \textcolor{keywordflow}{if} (bck[y1][x1] != fr[y1][x1])}
+\DoxyCodeLine{182                 \{}
+\DoxyCodeLine{183                     -\/-\/frees\_;}
+\DoxyCodeLine{184                     fr[y1][x1] = bck[y1][x1];}
+\DoxyCodeLine{185                 \}}
+\DoxyCodeLine{186             \}}
+\DoxyCodeLine{187         \}}
+\DoxyCodeLine{188     \}}
+\DoxyCodeLine{189     \textcolor{keywordtype}{bool} open(vector<vector<char>>\& fr, vector<vector<char>>\& bck, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} x)\{}
+\DoxyCodeLine{190         \textcolor{keywordflow}{if} (bck[y][x] == \textcolor{charliteral}{'*'})}
+\DoxyCodeLine{191             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{192         \textcolor{keywordflow}{if} (fr[y][x] == \textcolor{charliteral}{'|'})}
+\DoxyCodeLine{193             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{194         \textcolor{keywordflow}{if} (fr[y][x] == bck[y][x])}
+\DoxyCodeLine{195             \textcolor{keywordflow}{return} OpenAroundNumber(fr, bck, y, x);}
+\DoxyCodeLine{196         \textcolor{keywordflow}{if} (fr[y][x] == \textcolor{charliteral}{'*'})}
+\DoxyCodeLine{197         \{}
+\DoxyCodeLine{198             \textcolor{keywordflow}{if} (bck[y][x] == \textcolor{charliteral}{'0'})}
+\DoxyCodeLine{199                 OpenZeros(fr, bck, y, x);}
+\DoxyCodeLine{200             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{201             \{}
+\DoxyCodeLine{202                 fr[y][x] = bck [y][x];}
+\DoxyCodeLine{203                 -\/-\/frees\_;}
+\DoxyCodeLine{204             \}}
+\DoxyCodeLine{205         \}}
+\DoxyCodeLine{206         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{207     \}}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209 \};}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//MAIN\_CPP\_MINESWEEPER\_H}}
+
+\end{DoxyCode}

@@ -114,6 +114,9 @@ public:
         }
         return counter;
     }
+    ///\brief Проходит по всей таблице и заполняет каждую клетку без мины числом мин воркруг этой клетки
+    ///
+    /// \param field - поле с минами (вектор векторов с символами)
     void FillCells(vector<vector<char>>& field){
         for (int i = 0; i < h; ++i){
             for (int j = 0; j < w; ++j){

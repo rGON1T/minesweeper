@@ -1,0 +1,69 @@
+\hypertarget{class_mine_sweepeer}{}\doxysection{Mine\+Sweepeer Class Reference}
+\label{class_mine_sweepeer}\index{MineSweepeer@{MineSweepeer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a8b5ffd04dd5d7809e4a390c736dd35a1}\label{class_mine_sweepeer_a8b5ffd04dd5d7809e4a390c736dd35a1}} 
+int {\bfseries Get\+Free\+Cells} ()
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a0a93c98c1420cbe691edeca18ab3cbe2}\label{class_mine_sweepeer_a0a93c98c1420cbe691edeca18ab3cbe2}} 
+{\bfseries Mine\+Sweepeer} (int a, int b)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_ae208d4d7f34ab267548ddef8d22ba4ce}\label{class_mine_sweepeer_ae208d4d7f34ab267548ddef8d22ba4ce}} 
+int {\bfseries Get\+Number\+Of\+Digits} (int a)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a7d7d51fe005e93451d85da103c22b13f}\label{class_mine_sweepeer_a7d7d51fe005e93451d85da103c22b13f}} 
+int {\bfseries Get\+Power} (int a, int b)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a5128adcad2dee77fd8d7cc4e919a267e}\label{class_mine_sweepeer_a5128adcad2dee77fd8d7cc4e919a267e}} 
+char {\bfseries Get\+Digit\+From\+Number} (int a, int b)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a910d67d76383aed04677f96cbd9bc4a0}\label{class_mine_sweepeer_a910d67d76383aed04677f96cbd9bc4a0}} 
+void {\bfseries Fill} (vector$<$ vector$<$ char $>$ $>$ \&f, char a)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a0b2d4fef7a8757ca3d3d541628207a47}\label{class_mine_sweepeer_a0b2d4fef7a8757ca3d3d541628207a47}} 
+int {\bfseries Print} (vector$<$ vector$<$ char $>$ $>$ \&f)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_af5bd4dd42926e30b189675faaea799a0}\label{class_mine_sweepeer_af5bd4dd42926e30b189675faaea799a0}} 
+void {\bfseries Fill\+Mines\+Around\+Cell} (int y, int x, vector$<$ vector$<$ char $>$ $>$ \&field)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a4f4cdcecee45cc7443744f5c43c698f0}\label{class_mine_sweepeer_a4f4cdcecee45cc7443744f5c43c698f0}} 
+int {\bfseries Count\+Mines\+Around\+Cell} (int y, int x, vector$<$ vector$<$ char $>$ $>$ \&fr)
+\item 
+void \mbox{\hyperlink{class_mine_sweepeer_af631d2934d9f2410754e3b15bd04ddc4}{Fill\+Cells}} (vector$<$ vector$<$ char $>$ $>$ \&field)
+\begin{DoxyCompactList}\small\item\em Проходит по всей таблице и заполняет каждую клетку без мины числом мин воркруг этой клетки \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_mine_sweepeer_ac4d7be3c2ec6286c34db989b65fe8356}\label{class_mine_sweepeer_ac4d7be3c2ec6286c34db989b65fe8356}} 
+void {\bfseries Set\+Mines} (vector$<$ vector$<$ char $>$ $>$ \&v, float a)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a407902adc36fe5abd7e49af13d1571eb}\label{class_mine_sweepeer_a407902adc36fe5abd7e49af13d1571eb}} 
+bool {\bfseries Open\+Around\+Number} (vector$<$ vector$<$ char $>$ $>$ \&fr, vector$<$ vector$<$ char $>$ $>$ \&bck, int y, int x)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_ae9fba89004f68909e589b532b8623935}\label{class_mine_sweepeer_ae9fba89004f68909e589b532b8623935}} 
+void {\bfseries Open\+Zeros} (vector$<$ vector$<$ char $>$ $>$ \&fr, vector$<$ vector$<$ char $>$ $>$ \&bck, int y, int x)
+\item 
+\mbox{\Hypertarget{class_mine_sweepeer_a50faa0fa4c376e78427a02345ceda0e0}\label{class_mine_sweepeer_a50faa0fa4c376e78427a02345ceda0e0}} 
+bool {\bfseries open} (vector$<$ vector$<$ char $>$ $>$ \&fr, vector$<$ vector$<$ char $>$ $>$ \&bck, int y, int x)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_mine_sweepeer_af631d2934d9f2410754e3b15bd04ddc4}\label{class_mine_sweepeer_af631d2934d9f2410754e3b15bd04ddc4}} 
+\index{MineSweepeer@{MineSweepeer}!FillCells@{FillCells}}
+\index{FillCells@{FillCells}!MineSweepeer@{MineSweepeer}}
+\doxysubsubsection{\texorpdfstring{FillCells()}{FillCells()}}
+{\footnotesize\ttfamily void Mine\+Sweepeer\+::\+Fill\+Cells (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ char $>$ $>$ \&}]{field }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Проходит по всей таблице и заполняет каждую клетку без мины числом мин воркруг этой клетки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & -\/ поле с минами (вектор векторов с символами) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/cpp/minesweeper/minesweeper.\+h\end{DoxyCompactItemize}
